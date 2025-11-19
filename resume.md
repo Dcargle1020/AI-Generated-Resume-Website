@@ -73,7 +73,7 @@ Entry-level DevOps Engineer transitioning from  healthcare with a passion for au
 **Untied healthcare ** — Trotwood Ohio  
 *06/2022 - 09/2025*
 
-- - Communicated with cross-functional teams and documented complex cases with high accuracy, supporting consistent workflows.
+- Communicated with cross-functional teams and documented complex cases with high accuracy, supporting consistent workflows.
 - Resolved high-priority issues under pressure by analyzing root causes and collaborating with internal and external stakeholders.
 - Improved documentation and internal processes, reducing errors and enhancing efficiency through system-based solutions.
 
