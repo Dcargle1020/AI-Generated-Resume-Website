@@ -9,7 +9,7 @@ GitHub: https://github.com/Dcargle1020
 
 ## SUMMARY
 
-Entry-Level DevOps Engineer with a strong foundation in cloud technologies, automation, and Linux-based system reliability. Transitioning from a healthcare background into tech, bringing excellent communication, problem-solving, and adaptability skills. Hands-on experience with AWS fundamentals, scripting, CI/CD workflows, and deploying infrastructure using modern DevOps tools. Actively building real-world cloud projects and pursuing AWS certifications to accelerate growth in cloud engineering. Motivated self-learner with a collaborative mindset and a commitment to contributing to high-performing engineering teams.
+Entry-level DevOps Engineer transitioning from  healthcare with a passion for automation, cloud technologies, and system reliability. Skilled in scripting, cloud fundamentals, and deploying infrastructure using modern DevOps tools. Currently building hands-on projects and pursuing AWS certifications to accelerate a career in cloud engineering. Strong communicator and self-learner with a desire to contribute to high-performing technical teams.
 
 ---
 
