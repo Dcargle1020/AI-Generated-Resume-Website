@@ -11,7 +11,7 @@ Resources:
   ResumeSiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub '${ProjectName}-site-${AWS::AccountId}'
+      BucketName:  !Sub '${ProjectName}-site-${AWS::AccountId}'
       VersioningConfiguration:
         Status: Enabled
       WebsiteConfiguration:
