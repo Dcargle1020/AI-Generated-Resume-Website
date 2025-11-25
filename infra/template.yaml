@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Infrastructure for AI-Generated Resume Website (S3 + DynamoDB)
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: ai-resume
+
+Resources:
+  # === S3 Bucket for resume website ===
+  ResumeSiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${ProjectName}-site-${AWS::AccountId}'
+      VersioningConfiguration:
+        Status: Enabled
+      WebsiteConfiguration:
+        IndexDocument: index.html
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+
+  ResumeSiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ResumeSiteBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowPublicRead
+            Effect: Allow
+            Principal: "*"
+            Action:
+              - s3:GetObject
+            Resource: !Sub '${ResumeSiteBucket.Arn}/*'
+
+  # === DynamoDB table for deployment tracking ===
+  DeploymentTrackingTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${ProjectName}-DeploymentTracking'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: DeploymentId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: DeploymentId
+          KeyType: HASH
+
+  # === DynamoDB table for resume analytics (ATS scores etc.) ===
+  ResumeAnalyticsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub '${ProjectName}-ResumeAnalytics'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: ResumeId
+          AttributeType: S
+        - AttributeName: AnalysisTimestamp
+          AttributeType: S
+      KeySchema:
+        - AttributeName: ResumeId
+          KeyType: HASH
+        - AttributeName: AnalysisTimestamp
+          KeyType: RANGE
+
+Outputs:
+  ResumeSiteBucketName:
+    Description: S3 bucket for hosting the resume website
+    Value: !Ref ResumeSiteBucket
+
+  DeploymentTrackingTableName:
+    Description: DynamoDB table for deployment history
+    Value: !Ref DeploymentTrackingTable
+
+  ResumeAnalyticsTableName:
+    Description: DynamoDB table for ATS analysis results
+    Value: !Ref ResumeAnalyticsTable
+
